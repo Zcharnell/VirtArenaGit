@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="jquery/jquery-1.11.1.min.js"></script>
+	<script src="jquery/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
+	
+	<link rel="stylesheet" href="bootstrap-3.2.0-dist/css/bootstrap.css">
+	<link rel="stylesheet" href="jquery/jquery-ui-1.11.0.custom/jquery-ui.css">
+	<link rel="stylesheet" href="stylesheet.css">
+	<link rel="shortcut icon" href="VirtArenaImages/favicon.ico" type="image/x-icon" />
+
+
+    <script type='text/javascript' src='script.js'></script>
+	<script type='text/javascript' src='classes.js'></script>
+	<script type='text/javascript' src='scriptingfunctions.js'></script>
+	<script type='text/javascript' src='AIalgorithms.js'></script>
+	<script type='text/javascript' src='virtAbilities.js'></script>
+	<script type='text/javascript' src='unit_selection.js'></script>
+	<script type='text/javascript' src='animation.js'></script>
+	
+	<title>Virt Arena</title>
+</head>
+
+<body>
+	<div class="imageLoader">
+      <img id="BoardHexes" class="displayOff" src="VirtArenaImages/BoardHexes12.jpg">
+      <img id="BoardHexesRotate" class="displayOff" src="VirtArenaImages/BoardHexes12.jpg">
+      <img id="BoardHex" class="displayOff" src="VirtArenaImages/BoardHex.png">
+      <img id="BoardHexCheck" class="displayOff" src="VirtArenaImages/BoardHexCheck.png">
+      <img id="BoardNoHexes" class="displayOff" src="VirtArenaImages/BoardHexes6NoHex.jpg">
+      <img id="GameTitle" class="displayOff" src="VirtArenaImages/VirtArenaTitle.png">
+      <img id="ArturiusFullPic" class="displayOff" src="VirtArenaImages/catherine.jpg">
+      <!--<img id="ImperatorFullPic" class="displayOff" src="VirtArenaImages/lucius1.jpg">-->
+      <img id="HexBlue" class="displayOff" src="VirtArenaImages/HexBlue62.png">
+      <img id="HexBlueSelected" class="displayOff" src="VirtArenaImages/HexBlueSelected62.png">
+      <img id="HexBlueTarget" class="displayOff" src="VirtArenaImages/HexBlueTarget62.png">
+      <img id="HexGreenTransparent" class="displayOff" src="VirtArenaImages/HexGreenTransparent62.png">
+      <img id="HexGreenTransparentPath" class="displayOff" src="VirtArenaImages/HexGreenTransparentPath62.png">
+      <img id="HexRedTransparentPath" class="displayOff" src="VirtArenaImages/HexRedTransparentPath62.png">
+      <img id="HexGreenTransparentAI" class="displayOff" src="VirtArenaImages/HexGreenTransparentAI62.png">
+      <img id="HexTarget" class="displayOff" src="VirtArenaImages/HexTarget62.png">
+      <img id="HexTargetHover" class="displayOff" src="VirtArenaImages/HexTargetHover62.png">
+      <img id="HexTargetTargeted" class="displayOff" src="VirtArenaImages/HexTargetTargeted62.png">
+      <img id="HexGlowWhite" class="displayOff" src="VirtArenaImages/HexGlow62.png">
+      <img id="HexGlowWhiteBorder" class="displayOff" src="VirtArenaImages/HexGlow62Border.png">
+      <img id="HexGlowWhite2" class="displayOff" src="VirtArenaImages/HexGlow82.png">
+      <img id="HexGlowWhite3" class="displayOff" src="VirtArenaImages/HexGlow100.png">
+      <img id="HexGlowBlue" class="displayOff" src="VirtArenaImages/HexGlowBlue62.png">
+      <img id="HexGreenTransparentHover" class="displayOff" src="VirtArenaImages/HexGreenTransparentHover62.png">
+      <img id="HexRedTransparentHover" class="displayOff" src="VirtArenaImages/HexRedTransparentHover62.png">
+      <img id="HexRed" class="displayOff" src="VirtArenaImages/HexRed62.png">
+      <img id="HexRedSelected" class="displayOff" src="VirtArenaImages/HexRedSelected62.png">
+      <img id="HexRedTarget" class="displayOff" src="VirtArenaImages/HexRedTarget62.png">
+      <img id="HexRedImperatorTarget" class="displayOff" src="VirtArenaImages/HexRedImperatorTarget62.png">
+      <img id="SqrGrid" class="displayOff" src="VirtArenaImages/SquareGridTile62.png">
+      <img id="SelectionBGBorder" class="displayOff" src="VirtArenaImages/SelectionBGBorder.png">
+      <img id="HexTextArturius" class="displayOff" src="VirtArenaImages/HexTextArturius62.png">
+      <img id="HexTextLancer1" class="displayOff" src="VirtArenaImages/HexTextLancer1-62.png">
+      <img id="HexTextLancer2" class="displayOff" src="VirtArenaImages/HexTextLancer2-62.png">
+      <img id="HexTextImperator" class="displayOff" src="VirtArenaImages/HexTextImperator62.png">
+      <img id="HexTextPraetorian1" class="displayOff" src="VirtArenaImages/HexTextPraetorian1-62.png">
+      <img id="HexTextPraetorian2" class="displayOff" src="VirtArenaImages/HexTextPraetorian2-62.png">
+    </div>
+<div id="allcontainer">
+	<div class="title">
+		<div class="container">
+			<div style="text-align:center">
+				
+				<div id="titleCol">
+					<div id="commandPromptDiv"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class='game'>
+		<div class='board'>
+			<div class='container'>
+
+				<div id="middleCanvasDiv">
+					<div id='canvasDiv'>
+						<canvas id="canvas1" width="1280" height="596"></canvas>
+					</div>
+					<!--<div id='errorPromptDiv' class='displayOff'></div>-->
+					<div class='buttonArea'>
+						<div class='button' id='button2' title='Start Game!'>Option 2</div>
+					</div>
+					<div id="activationOrderBar">
+						<img id='activationVirt1Img' class='activationOrderBarVirtImg' src=''>
+						<div id='activationHealthBar1' class='activationHealthBar'><!--<div class='progress-labelActivation1'>HP</div>--></div>
+						<img id='activationVirt2Img' class='activationOrderBarVirtImg' src=''>
+						<div id='activationHealthBar2' class='activationHealthBar'><!--<div class='progress-labelActivation1'>HP</div>--></div>
+						<img id='activationVirt3Img' class='activationOrderBarVirtImg' src=''>
+						<div id='activationHealthBar3' class='activationHealthBar'><!--<div class='progress-labelActivation1'>HP</div>--></div>
+						<img id='activationVirt4Img' class='activationOrderBarVirtImg' src=''>
+						<div id='activationHealthBar4' class='activationHealthBar'><!--<div class='progress-labelActivation1'>HP</div>--></div>
+						<img id='activationVirt5Img' class='activationOrderBarVirtImg' src=''>
+						<div id='activationHealthBar5' class='activationHealthBar'><!--<div class='progress-labelActivation1'>HP</div>--></div>
+						<img id='activationVirt6Img' class='activationOrderBarVirtImg' src=''>
+						<div id='activationHealthBar6' class='activationHealthBar'><!--<div class='progress-labelActivation1'>HP</div>--></div>
+					</div>
+					
+					<div id='selectArea'>
+						<div id='unitSelect'>
+							<img id='unitSelectBG' src='VirtArenaImages/SelectionBGBorderBlank.png'>
+							<img id='unitSelectImgName' src='VirtArenaImages/SelectionBGBorderName.png'>
+							<div id='unitSelectName'></div>
+							<img id='unitSelectPicture' src='VirtArenaImages/virtarenaicon.png'>
+							<div id='unitSelectStats'>
+								<div id='unitSelectHealthBar'></div>
+								<div id='unitSelectStatsHPText'></div>
+								<div id='unitSelectStatsHP' class='garamondBold'></div>
+								<div id='unitSelectStatsSpeedText'></div>
+								<div id='unitSelectStatsSpeed' class='displayOff'></div>
+								<div id='unitSelectStatsMoveText'></div>
+								<div id='unitSelectStatsMove' class='displayOff'></div>
+								<div id='unitSelectStatsDefenseText'></div>
+								<div id='unitSelectStatsDefense' class='displayOff'></div>
+								<div id='unitSelectStatsStabilityText'></div>
+								<div id='unitSelectStatsStability' class='displayOff'></div>
+							</div>
+							<div id='unitSelectWeapons'>
+								<img id='unitSelectWeapon1' src='VirtArenaImages/unitSelectWeapon1.png'>
+								<img id='unitSelectWeapon2' src='VirtArenaImages/unitSelectWeapon2.png'>
+								<img id='unitSelectBasicAbility1' class='displayOff' src='VirtArenaImages/unitSelectAbilityArturius1.png' title=''>
+								<img id='unitSelectBasicAbility2' class='displayOff' src='VirtArenaImages/unitSelectAbilityArturius2.png' title=''>
+							</div>
+							<div id='unitSelectAbilities'>
+								<img id='unitSelectAbility1' class='virtAbility1234' src='VirtArenaImages/unitSelectAbilityArturius3.png'>
+								<img id='unitSelectAbility2' class='virtAbility1234' src='VirtArenaImages/unitSelectAbilityArturius3.png'>
+								<img id='unitSelectAbility3' class='virtAbility1234' src='VirtArenaImages/unitSelectAbilityArturius3.png'>
+								<img id='unitSelectAbility4' class='virtAbility1234' src='VirtArenaImages/unitSelectAbilityArturius3.png'>
+								<img id='unitSelectComAbility1' class='virtComAbility1234' src='VirtArenaImages/unitSelectAbilityArturius3.png'>
+								<img id='unitSelectComAbility2' class='virtComAbility1234' src='VirtArenaImages/unitSelectAbilityArturius3.png'>
+								<img id='unitSelectComAbility3' class='virtComAbility1234' src='VirtArenaImages/unitSelectAbilityArturius3.png'>
+								<img id='unitSelectComAbility4' class='virtComAbility1234' src='VirtArenaImages/unitSelectAbilityArturius3.png'>
+							</div>
+							<div id='unitSelectStances'>
+								<div class='unitSelectStanceButton' id='unitSelectStances1'>Stance 1</div>
+								<div class='unitSelectStanceButton' id='unitSelectStances2'>Stance 2</div>
+								<div class='unitSelectStanceButton' id='unitSelectStances3'>Stance 3</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+
+				<div id="rightCanvasDiv">
+					<div class='buttonExtra' id='buttonExtra1'>Skip Continues</div>
+					<div class='buttonExtra' id='buttonExtra2'>Normal</div>
+					<div class='buttonExtra' id='buttonExtra3'>Fast</div>
+					<div class='buttonExtra' id='buttonExtra4'>Speedy</div>
+					<div class='buttonExtra' id='buttonExtra5'>Dev</div>
+				</div>
+				<img id='targetVirtCheck' class='displayOff' src='VirtArenaImages/targetAcceptIcon.png'>
+				<img id='abilityAcceptCheck' class='displayOff' src='VirtArenaImages/abilityAcceptIcon.png'>
+				<img id='combatAbility1' class='displayOff combatAbility' src='VirtArenaImages/unitSelectAbilityCombat1.png' title=''>
+				<img id='combatAbility2' class='displayOff combatAbility' src='VirtArenaImages/unitSelectAbilityCombat1.png' title=''>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+
+</html>
